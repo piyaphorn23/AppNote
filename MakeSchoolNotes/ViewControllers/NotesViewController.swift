@@ -109,7 +109,7 @@ extension NotesViewController //เพิ่มความยืดหยุ่
     //mark : datasourse
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool //แถวไหนสามารถ editได้บ้าง ฟังชันนี้ทำให้สไลด์ได้
     {
-            return false///////
+            return true///////
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -118,9 +118,9 @@ extension NotesViewController //เพิ่มความยืดหยุ่
             do{
                 let realm = try Realm()  //เชื่อมดาต้าเบส
                 //////////////
-                /*try realm.write(){
+                try realm.write(){
                     realm.delete(note)
-                }*/
+                }
                 notes = realm.objects(Note).sorted("modificationDate", ascending: false) //ascending คือเรียงจาก น้อยไปมาก เป็น false คือกลับกัน
             }
             catch {
