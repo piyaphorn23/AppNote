@@ -55,7 +55,7 @@ class NotesViewController: UITableViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "ShowNote"){
+        if(segue.identifier == "ShowNote"){///////
         let noteDisplay = segue.destinationViewController  as! NoteDisplayViewController
         noteDisplay.note = SelectedNote
         }
@@ -99,7 +99,7 @@ extension NotesViewController //เพิ่มความยืดหยุ่
 {
     //mark: Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        /////////
         self.performSegueWithIdentifier("ShowExistingNote", sender: self)
     }
     
@@ -107,7 +107,7 @@ extension NotesViewController //เพิ่มความยืดหยุ่
     //mark : datasourse
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool //แถวไหนสามารถ editได้บ้าง ฟังชันนี้ทำให้สไลด์ได้
     {
-            return false
+            return false///////
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -115,6 +115,7 @@ extension NotesViewController //เพิ่มความยืดหยุ่
             let note = notes[indexPath.row] as Object
             do{
                 let realm = try Realm()  //เชื่อมดาต้าเบส
+                //////////////
                 notes = realm.objects(Note).sorted("modificationDate", ascending: false) //ascending คือเรียงจาก น้อยไปมาก เป็น false คือกลับกัน
             }
             catch {
