@@ -100,6 +100,8 @@ extension NotesViewController //เพิ่มความยืดหยุ่
     //mark: Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         /////////
+        SelectedNote = notes[indexPath.row]
+        
         self.performSegueWithIdentifier("ShowExistingNote", sender: self)
     }
     
@@ -116,6 +118,9 @@ extension NotesViewController //เพิ่มความยืดหยุ่
             do{
                 let realm = try Realm()  //เชื่อมดาต้าเบส
                 //////////////
+                /*try realm.write(){
+                    realm.delete(note)
+                }*/
                 notes = realm.objects(Note).sorted("modificationDate", ascending: false) //ascending คือเรียงจาก น้อยไปมาก เป็น false คือกลับกัน
             }
             catch {
